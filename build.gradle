@@ -22,7 +22,9 @@ dependencies {
     testImplementation 'com.google.code.gson:gson:2.8.6'
 }
 
-test {
-    useJUnitPlatform()
-    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
+tasks {
+    test {
+        useJUnitPlatform()
+        systemProperty 'selenide.headless', System.getProperty('selenide.headless')
+    }
 }
