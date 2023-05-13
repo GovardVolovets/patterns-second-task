@@ -16,15 +16,14 @@ import static ru.netology.testmode.data.DataGenerator.getRandomPassword;
 
 class AuthTest {
 
-//    @BeforeEach
-//    void setup() {
-//        open("http://localhost:9999");
-//    }
+    @BeforeEach
+    void setup() {
+        open("http://localhost:9999");
+    }
 
     @Test
     @DisplayName("Should successfully login with active registered user")
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
-        open("http://localhost:9999");
         var registeredUser = DataGenerator.Registration.getRegisteredUser("active");
 
         $("[name='login']").setValue(registeredUser.getLogin());
@@ -36,7 +35,6 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with not registered user")
     void shouldGetErrorIfNotRegisteredUser() {
-        open("http://localhost:9999");
         var notRegisteredUser = getUser("active");
 
         $("[name='login']").setValue(notRegisteredUser.getLogin());
@@ -48,7 +46,6 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with blocked registered user")
     void shouldGetErrorIfBlockedUser() {
-        open("http://localhost:9999");
         var blockedUser = getRegisteredUser("blocked");
 
         $("[name='login']").setValue(blockedUser.getLogin());
@@ -60,7 +57,6 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with wrong login")
     void shouldGetErrorIfWrongLogin() {
-        open("http://localhost:9999");
         var registeredUser = getRegisteredUser("active");
         var wrongLogin = getRandomLogin();
 
@@ -73,7 +69,6 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with wrong password")
     void shouldGetErrorIfWrongPassword() {
-        open("http://localhost:9999");
         var registeredUser = getRegisteredUser("active");
         var wrongPassword = getRandomPassword();
 
